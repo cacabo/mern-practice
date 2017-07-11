@@ -10,6 +10,7 @@ import sanitizeHtml from 'sanitize-html';
  * @returns void
  */
 export function getPosts(req, res) {
+  // Find all posts, sorted by which are the most recent
   Post.find().sort('-dateAdded').exec((err, posts) => {
     if (err) {
       res.status(500).send(err);
@@ -25,6 +26,7 @@ export function getPosts(req, res) {
  * @returns void
  */
 export function addPost(req, res) {
+  // Validation to ensure name, title, and contenta re all present
   if (!req.body.post.name || !req.body.post.title || !req.body.post.content) {
     res.status(403).end();
   }
@@ -42,6 +44,7 @@ export function addPost(req, res) {
     if (err) {
       res.status(500).send(err);
     }
+    // Otherwise, the post successfully saved
     res.json({ post: saved });
   });
 }
