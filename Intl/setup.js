@@ -1,11 +1,9 @@
 // list of available languages
 export const enabledLanguages = [
   'en',
-  'fr',
 ];
 
 // this object will have language-specific data added to it which will be placed in the state when that language is active
-// if localization data get to big, stop importing in all languages and switch to using API requests to load upon switching languages
 export const localizationData = {};
 
 // here you bring in 'intl' browser polyfill and language-specific polyfills
@@ -55,10 +53,3 @@ import enData from './localizationData/en';
 addLocaleData(en);
 localizationData.en = enData;
 localizationData.en.messages = flattenMessages(localizationData.en.messages);
-
-import 'intl/locale-data/jsonp/fr';
-import fr from 'react-intl/locale-data/fr';
-import frData from './localizationData/fr';
-addLocaleData(fr);
-localizationData.fr = frData;
-localizationData.fr.messages = flattenMessages(localizationData.fr.messages);
